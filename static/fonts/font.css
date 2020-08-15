@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro Bold Italic'), local('FSAlbertPro-BoldItalic'),
+        url('FSAlbertPro-BoldItalic.woff2') format('woff2'),
+        url('FSAlbertPro-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro Thin'), local('FSAlbertPro-Thin'),
+        url('FSAlbertPro-Thin.woff2') format('woff2'),
+        url('FSAlbertPro-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro'), local('FSAlbertPro'),
+        url('FSAlbertPro.woff2') format('woff2'),
+        url('FSAlbertPro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro Light'), local('FSAlbertPro-Light'),
+        url('FSAlbertPro-Light.woff2') format('woff2'),
+        url('FSAlbertPro-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro Bold'), local('FSAlbertPro-Bold'),
+        url('FSAlbertPro-Bold.woff2') format('woff2'),
+        url('FSAlbertPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro Thin Italic'), local('FSAlbertPro-ThinItalic'),
+        url('FSAlbertPro-ThinItalic.woff2') format('woff2'),
+        url('FSAlbertPro-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro Italic'), local('FSAlbertPro-Italic'),
+        url('FSAlbertPro-Italic.woff2') format('woff2'),
+        url('FSAlbertPro-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro ExtraBold'), local('FSAlbertPro-ExtraBold'),
+        url('FSAlbertPro-ExtraBold.woff2') format('woff2'),
+        url('FSAlbertPro-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FS Albert Pro';
+    src: local('FS Albert Pro Light Italic'), local('FSAlbertPro-LightItalic'),
+        url('FSAlbertPro-LightItalic.woff2') format('woff2'),
+        url('FSAlbertPro-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+

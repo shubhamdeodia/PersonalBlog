@@ -37,13 +37,12 @@ module.exports = {
             }
         },
         {
-            resolve: 'gatsby-plugin-google-fonts',
+            resolve: 'gatsby-plugin-web-font-loader',
             options: {
-                fonts: [
-                    'robot mono',
-                    'source sans pro\:300,400,400i,700' // you can also specify font weights and styles
-                ],
-                display: 'swap'
+                custom: {
+                    families: ['FS Albert Pro'],
+                    urls: ['/static/fonts/font.css']
+                }
             }
         }
     // this (optional) plugin enables Progressive Web App + Offline functionality
