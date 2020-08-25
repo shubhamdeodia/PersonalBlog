@@ -80,7 +80,6 @@ export const P = styled.p`
 `
 
 export const H1 = styled.h1`
-white-space: nowrap;
     font-size: 2.25rem;
     line-height: 2.25rem;
     grid-column: 1/ -1;
