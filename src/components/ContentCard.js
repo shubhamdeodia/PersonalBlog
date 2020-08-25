@@ -34,7 +34,7 @@ export const ContentCard = ({ date, title, excerpt, slug }) => {
                             size='medium'
                             textAlign='center'
                             margin='0 0 1.5rem 0'
-                            color='dark1'>
+                            color='dark2'>
                             {excerpt}{'...  '}
                             <Link to={slug}>read more</Link>
                         </P>

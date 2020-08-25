@@ -23,8 +23,8 @@ const allPosts = ({ pageContext, data }) => {
             <SEO />
             {/* <FeatureImage showParticles /> */}
             <Content>
-                <H1 textAlign='center' margin='0 0 1rem 0'>Nothing good to say</H1>
-                <P color='dark2' textAlign='center'>Nutella</P>
+                {/* <H1 textAlign='center' color='dark2' margin='0 0 1rem 0'>Welcome to my Blog</H1>
+                <P color='dark2' textAlign='center'>Simple</P> */}
 
                 {posts.map((post) => (
                     <ContentCard

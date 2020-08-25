@@ -8,7 +8,7 @@ export default {
         main1: '#ee4938',
         main2: 'hsl(207,70%,94%)',
         dark1: 'hsl(227,2%,12%)',
-        dark2: 'hsl(227,2%,26%)',
+        dark2: '#3a3a3a',
         dark3: 'hsl(227,2%,64%)',
         light1: 'hsl(0,0%,97%)',
         light2: 'hsl(0,0%,99%)'

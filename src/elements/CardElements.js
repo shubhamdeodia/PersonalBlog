@@ -13,7 +13,6 @@ export const ArticleWrapper = styled.div`
 `
 
 export const CardImageWrapper = styled.div `
-        position: relative;
         min-width: 320px;
         overflow: hidden;
         @media ${(props) => props.theme.breakpoints.tablet}{

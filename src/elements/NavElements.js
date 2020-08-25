@@ -30,14 +30,28 @@ export const NavBar = styled.div`
     padding: 5px;
     align-items: center;
     transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+`
+export const NavElementsContainer = styled.div`
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    @media ${(props) => props.theme.breakpoints.mobile}{
+        width: 50%;
+    }
+`
 
-    & a img svg:hover path {
-            fill: black;
-            transition: all ease 0.3s;
-          }
-          
-    & a img svg path {
-        transition: all ease 0.3s;
+export const NavLogo = styled((props) => <Link {...props} >{props.children}</Link>)`
+        margin-left: 3rem;
+        justify-content: center;
+        font-size: 2rem;
+        line-height: 2rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: ${(props) => props.theme.colors.main1};  
+        
+        @media ${(props) => props.theme.breakpoints.mobile}{
+            margin: 1rem;
+            font-size: 1.5rem;
         }
 `
 
@@ -53,7 +67,4 @@ export const NavElements = styled((props) => <Link {...props} >{props.children}<
             color: #EE4938;
             text-decoration: underline;
         }
-
-        
-  
 `

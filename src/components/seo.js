@@ -63,6 +63,10 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
                     content: metaUrl
                 },
                 {
+                    name: 'og:image',
+                    content: metaImage
+                },
+                {
                     name: 'twitter:card',
                     content: 'summary'
                 },
