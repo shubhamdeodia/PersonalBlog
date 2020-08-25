@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const FooterWrapper = styled.footer`
     grid-column: 2/ span 12;
+    grid-row: 9 / span 1;
     min-height: 11.25rem;
     padding: 3rem 0;
     display: flex;
@@ -33,7 +34,13 @@ export const FooterSocialIcons = styled.footer`
                 padding: 0 1rem;
                 transition: filter 0.3s ease
             }
+
+            & a svg {
+                    fill: #EE4938;
+            }
+           
             & img:hover, img:focus {
+          
                 filter: brightness(50%)
             }
 `

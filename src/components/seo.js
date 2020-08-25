@@ -6,11 +6,10 @@
  */
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, keywords, url, author, lang, image, title }) {
     const { site } = useStaticQuery(
         graphql`
             query {
@@ -18,7 +17,9 @@ function SEO({ description, lang, meta, title }) {
                     siteMetadata {
                         title
                         description
-                        author
+                        author,
+                        image,
+                        url
                     }
                 }
             }
@@ -26,6 +27,12 @@ function SEO({ description, lang, meta, title }) {
     )
 
     const metaDescription = description || site.siteMetadata.description
+    const metaAuthor = author || site.siteMetadata.author
+
+    const metaImage = image || site.siteMetadata.image
+
+    const metaUrl = url || site.siteMetadata.url
+    const metaKeywords = keywords || ['gatsby', 'blog', 'gatsby MDX blog']
 
     return (
         <Helmet
@@ -52,22 +59,34 @@ function SEO({ description, lang, meta, title }) {
                     content: 'website'
                 },
                 {
+                    property: 'og:url',
+                    content: metaUrl
+                },
+                {
                     name: 'twitter:card',
                     content: 'summary'
                 },
                 {
                     name: 'twitter:creator',
-                    content: site.siteMetadata.author
+                    content: metaAuthor
                 },
                 {
                     name: 'twitter:title',
                     content: title
                 },
                 {
+                    name: 'twitter:image',
+                    content: metaImage
+                },
+                {
                     name: 'twitter:description',
                     content: metaDescription
                 }
-            ].concat(meta)} />
+            ].concat(
+                metaKeywords & metaKeywords.length > 0
+                    ? { name: 'keywords', content: metaKeywords.join(', ') }
+                    : []
+            )} />
     )
 }
 
@@ -75,13 +94,6 @@ SEO.defaultProps = {
     lang: 'en',
     meta: [],
     description: ''
-}
-
-SEO.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    lang: PropTypes.string,
-    meta: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default SEO

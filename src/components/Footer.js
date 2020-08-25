@@ -1,5 +1,5 @@
 import React from 'react'
-import { FooterWrapper, FooterSocialIcons, FooterSocialWrapper } from '../elements'
+import { FooterWrapper, FooterSocialIcons, FooterSocialWrapper, P } from '../elements'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Footer = () => {
@@ -35,6 +35,13 @@ const Footer = () => {
                 <a href='https://facebook.com/shubham.deodia' target='_blank' rel='noopener noreferrer '>
                     <img src={data.instagram.publicURL} />
                 </a>
+                <P
+                    margin='20px'
+                    weight='normal'
+                    size='xsmall'
+                    color='dark3'>
+                        &#169; 2020 SugarBlog. All rights reserved
+                </P>
             </FooterSocialIcons>
         </FooterSocialWrapper>
     </FooterWrapper>)

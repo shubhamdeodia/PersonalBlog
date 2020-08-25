@@ -1,18 +1,29 @@
 module.exports = {
     siteMetadata: {
-        title: 'Sugar Blog',
-        description: 'Sugar coated and simple technical blogs',
-        author: '@shubhamD'
+        title: 'ShubhamD Blog',
+        description: 'Super simple blogs on everything related to UI',
+        author: '@shubhamD',
+        image: './src/images/radio.jpg',
+        url: 'https://github.com/shubhamdeodia'
     },
     plugins: [
+        'gatsby-transformer-sharp',
+        'gatsby-plugin-sharp',
+        'gatsby-plugin-react-helmet',
         {
             resolve: 'gatsby-source-filesystem',
             options: {
                 name: 'pages',
-                path: `${__dirname}/src/pages`
+                path: `${__dirname}/src/pages/`
             }
         },
-        'gatsby-plugin-react-helmet',
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: 'posts',
+                path: `${__dirname}/src/posts/`
+            }
+        },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
@@ -20,8 +31,6 @@ module.exports = {
                 path: `${__dirname}/src/images`
             }
         },
-        'gatsby-transformer-sharp',
-        'gatsby-plugin-sharp',
         {
             resolve: 'gatsby-plugin-mdx',
             options: {
@@ -41,12 +50,10 @@ module.exports = {
             options: {
                 custom: {
                     families: ['FS Albert Pro'],
-                    urls: ['/static/fonts/font.css']
+                    // dont put fonts in the same location as font.css
+                    urls: ['font.css']
                 }
             }
         }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     ]
 }

@@ -1,10 +1,11 @@
 export default {
     fonts: {
-        main: 'FS Albert Pro, sans-serif',
+        // main: 'Courier, "Courier New", monospace',
+        main: 'FS Albert Pro',
         code: 'Roboto Mono, monospace'
     },
     colors: {
-        main1: 'hsl(207,70%,59%)',
+        main1: '#ee4938',
         main2: 'hsl(207,70%,94%)',
         dark1: 'hsl(227,2%,12%)',
         dark2: 'hsl(227,2%,26%)',

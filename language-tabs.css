@@ -1,0 +1,48 @@
+.gatsby-highlight {
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gatsby-highlight pre[class*="language-"] {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gatsby-highlight pre[class*="language-"]::before {
+    background: black;
+    overflow: auto;
+    border-radius: 0 0 0.25rem 0.25rem;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.025rem;
+    padding: 0.1rem 0.5rem;
+    position: absolute;
+    right: 1rem;
+    text-align: right;
+    text-transform: uppercase;
+    top: 0;
+  }
+
+.gatsby-highlight pre[class~=language-javascript]:before,
+.gatsby-highlight pre[class~=language-js]:before {
+    content:"js";
+    background:#f7df1e;
+    color:#000
+}
+.gatsby-highlight pre[class~=language-html]:before{
+    content:"html";
+    background:#005a9c;
+    color:#fff
+}
+.gatsby-highlight pre[class~=language-css]:before{
+    content:"css";
+    background:#ff9800;
+    color:#fff
+}
+
+.gatsby-highlight pre[class~=language-python]:before{
+    content:"python";
+    background: darkslategray;
+    color:#fff
+}
