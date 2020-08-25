@@ -20,12 +20,10 @@ export const Thumbnail = ({ imgName }) => {
         }
       `}
             render={(data) => {
-                console.log('Thumbnail -> data', data)
                 const image = data.allImageSharp.edges.find(
                     (edge) => edge.node.fluid.originalName === imgName
                 )
 
-                console.log('Thumbnail -> image', image)
                 if (!image) {
                     return null
                 }
