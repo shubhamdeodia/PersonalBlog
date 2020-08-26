@@ -7,6 +7,14 @@ const path = require('path')
 
 // // You can delete this file if you're not using it
 
+exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
+    if (getConfig().mode === 'production') {
+        actions.setWebpackConfig({
+            devtool: false
+        })
+    }
+}
+
 exports.createPages = async({ actions, graphql }) => {
     const { createPage } = actions
     const { data } = await graphql(`

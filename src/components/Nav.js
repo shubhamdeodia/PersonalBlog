@@ -17,8 +17,8 @@ const Nav = () => {
             <NavBar >
                 <NavLogo to='/'>{ '{ shubhamd }' }</NavLogo>
                 <NavElementsContainer>
-                    <NavElements to='/'>Blog Home</NavElements>
-                    <NavElements target='_blank' to='https://shubhamdeodia.github.io/shubhamD/'>Resume</NavElements>
+                    <NavElements to='/'>Blog</NavElements>
+                    <NavElements target='_blank' to='https://shubhamdeodia.github.io/shubhamD/'>About Me</NavElements>
                 </NavElementsContainer>
             </NavBar>
         </NavWrapper>

@@ -46,26 +46,7 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
                     name: 'description',
                     content: metaDescription
                 },
-                {
-                    property: 'og:title',
-                    content: title
-                },
-                {
-                    property: 'og:description',
-                    content: metaDescription
-                },
-                {
-                    property: 'og:type',
-                    content: 'website'
-                },
-                {
-                    property: 'og:url',
-                    content: metaUrl
-                },
-                {
-                    name: 'og:image',
-                    content: metaImage
-                },
+
                 {
                     name: 'twitter:card',
                     content: 'summary'
@@ -85,6 +66,26 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
                 {
                     name: 'twitter:description',
                     content: metaDescription
+                },
+                {
+                    property: 'og:title',
+                    content: title
+                },
+                {
+                    property: 'og:description',
+                    content: metaDescription
+                },
+                {
+                    property: 'og:type',
+                    content: 'website'
+                },
+                {
+                    property: 'og:url',
+                    content: metaUrl
+                },
+                {
+                    name: 'og:image',
+                    content: metaImage
                 }
             ].concat(
                 metaKeywords & metaKeywords.length > 0

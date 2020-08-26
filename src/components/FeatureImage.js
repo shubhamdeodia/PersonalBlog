@@ -1,22 +1,21 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { useStaticQuery, graphql } from 'gatsby'
 import { FeatureImageWrapper } from '../elements'
 import Particles from 'react-particles-js'
 import particlesSvg from '../images/deer.svg'
 
 export const FeatureImage = ({ fluid, showParticles }) => {
-    const data = useStaticQuery(graphql`
-        query {
-            featureimage: file(relativePath: { eq: "starrynight.jpg" }) {
-                childImageSharp {
-                    fluid(quality: 90) {    
-                        ...GatsbyImageSharpFluid
-                    }
-                }
-            }
-        }
-    `)
+    // const data = useStaticQuery(graphql`
+    //     query {
+    //         featureimage: file(relativePath: { eq: "starrynight.jpg" }) {
+    //             childImageSharp {
+    //                 fluid(quality: 90) {
+    //                     ...GatsbyImageSharpFluid
+    //                 }
+    //             }
+    //         }
+    //     }
+    // `)
 
     return (
 
@@ -96,7 +95,7 @@ export const FeatureImage = ({ fluid, showParticles }) => {
                             }
                         }} />
 
-                    : <Img fluid={fluid || data.featureimage.childImageSharp.fluid} style={{
+                    : <Img fluid={fluid} style={{
                         position: 'absolute',
                         left: 0,
                         top: 0,

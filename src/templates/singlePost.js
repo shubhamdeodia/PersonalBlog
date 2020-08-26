@@ -8,7 +8,7 @@ import SEO from '../components/seo'
 
 export default function singlePost({ data }) {
     const featureImage = data.mdx.frontmatter.featureImage.childImageSharp.fluid
-    const seoImage = data.mdx.frontmatter.featureImage.publicUrl
+    const seoImage = data.mdx.frontmatter.featureImage.childImageSharp.fluid.src
     const title = data.mdx.frontmatter.title
     const description = data.mdx.frontmatter.excerpt
 

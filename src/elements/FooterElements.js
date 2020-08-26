@@ -29,16 +29,28 @@ export const FooterSocialIcons = styled.div`
   flex: 0 0 100%;
   margin-bottom: 2rem;
 
-  img {
+  svg {
     height: 22px;
     padding: 0 1rem;
     transition: filter 0.3s ease;
+    fill: #A1A2A5;
   }
 
+  /* svg path {
+    fill: #A1A2A5;
+  } */
 
-  img:hover,
-  img:focus {
-  
-    filter: brightness(50%);
+  svg:hover {
+    fill:${(props) => props.theme.colors.main1};
+  }
+
+  svg:hover,
+  svg:focus {
+    fill:${(props) => props.theme.colors.main1};
+  }
+
+  svg:hover ,
+  svg:focus path {
+    fill:${(props) => props.theme.colors.main1};
   }
 `

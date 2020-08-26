@@ -36,6 +36,23 @@ export const DateReadTimeWrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+
+`
+
+export const ClockWrapper = styled.div`
+    width: 85px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media ${(props) => props.theme.breakpoints.tablet}{
+        width: 90px;
+    }
+    & svg {
+        width: 20px;
+        height: 20px;
+        fill: ${(props) => props.theme.colors.dark3};
+        margin-bottom: 7px;
+    }
 `
 
 export const CardWrapper = styled.div`

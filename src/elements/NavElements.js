@@ -50,7 +50,7 @@ export const NavLogo = styled((props) => <Link {...props} >{props.children}</Lin
         color: ${(props) => props.theme.colors.main1};  
         
         @media ${(props) => props.theme.breakpoints.mobile}{
-            margin: 1rem;
+            margin: 0.875rem;
             font-size: 1.5rem;
         }
 `

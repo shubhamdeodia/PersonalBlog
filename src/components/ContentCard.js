@@ -1,9 +1,10 @@
 import React from 'react'
-import { CardContentWrapper, CardWrapper, P, H2, ArticleWrapper, CardImageWrapper, DateReadTimeWrapper } from '../elements'
+import { CardContentWrapper, CardWrapper, P, H2, ArticleWrapper, CardImageWrapper, DateReadTimeWrapper, ClockWrapper } from '../elements'
 import { Link } from 'gatsby'
 import { Button, Thumbnail } from '../components'
+import Clock from '../images/clock.svg'
 
-export const ContentCard = ({ date, title, excerpt, slug }) => {
+export const ContentCard = ({ date, title, excerpt, slug, readtime }) => {
     const imgName = `${slug}.png`
     return (
         <>
@@ -20,12 +21,16 @@ export const ContentCard = ({ date, title, excerpt, slug }) => {
                                 margin='0 0 0.5rem 0'
                                 color='dark3'>{date}
                             </P>
-                            <P
-                                size='xsmall'
-                                textAlign='center'
-                                margin='0 0 0.5rem 0'
-                                color='dark3'> 3min read
-                            </P>
+                            <ClockWrapper >
+                                <Clock />
+                                <P
+                                    size='xsmall'
+                                    textAlign='center'
+                                    margin='0 0 0.5rem 0'
+                                    color='dark3'> {readtime} {'read'}
+                                </P>
+                            </ClockWrapper>
+
                         </DateReadTimeWrapper >
                         <H2 weight='bold' color='dark2' textAlign='center' margin='0 0 1rem 0'>
                             {title}

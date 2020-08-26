@@ -2,7 +2,8 @@ import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
-export const Thumbnail = ({ imgName }) => {
+export const Thumbnail = ({ imgName, width }) => {
+    console.log('Thumbnail -> width', width)
     return (
         <StaticQuery
             query={graphql`
@@ -24,11 +25,13 @@ export const Thumbnail = ({ imgName }) => {
                     (edge) => edge.node.fluid.originalName === imgName
                 )
 
+                console.log('Thumbnail -> image', image)
+
                 if (!image) {
                     return null
                 }
                 return (
-                    <Img fluid={image.node.fluid} />
+                    <Img width={width} fluid={image.node.fluid} />
                 )
             }} />
     )

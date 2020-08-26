@@ -1,46 +1,49 @@
 import React from 'react'
 import { FooterWrapper, FooterSocialIcons, FooterSocialWrapper, P } from '../elements'
-import { useStaticQuery, graphql } from 'gatsby'
+// import { useStaticQuery, graphql } from 'gatsby'
+import Linkedin from '../images/linkedin.svg'
+import Facebook from '../images/facebook.svg'
+import Instagram from '../images/instagram.svg'
 
 const Footer = () => {
-    const data = useStaticQuery(graphql`
-    query {
-        facebook: file(relativePath: {
-            eq: "facebook.svg"
-        }) {
-            publicURL
-        },
-        linkedin: file(relativePath: {
-            eq: "linkedin.svg"
-        }) {
-            publicURL
-        },
-        instagram: file(relativePath: {
-            eq: "instagram.svg"
-        }) {
-            publicURL
-        }
-    }
-`)
+//     const data = useStaticQuery(graphql`
+//     query {
+//         facebook: file(relativePath: {
+//             eq: "facebook.svg"
+//         }) {
+//             publicURL
+//         },
+//         linkedin: file(relativePath: {
+//             eq: "linkedin.svg"
+//         }) {
+//             publicURL
+//         },
+//         instagram: file(relativePath: {
+//             eq: "instagram.svg"
+//         }) {
+//             publicURL
+//         }
+//     }
+// `)
 
     return (<FooterWrapper >
         <FooterSocialWrapper>
             <FooterSocialIcons>
                 <a href='https://linkedin.com/shubham.deodia' target='_blank' rel='noopener noreferrer '>
-                    <img src={data.linkedin.publicURL} />
+                    <Linkedin />
                 </a>
                 <a href='https://facebook.com/shubham.deodia' target='_blank' rel='noopener noreferrer '>
-                    <img src={data.facebook.publicURL} />
+                    <Facebook />
                 </a>
                 <a href='https://facebook.com/shubham.deodia' target='_blank' rel='noopener noreferrer '>
-                    <img src={data.instagram.publicURL} />
+                    <Instagram />
                 </a>
                 <P
                     margin='20px'
                     weight='normal'
                     size='xsmall'
                     color='dark3'>
-                        &#169; 2020 SugarBlog. All rights reserved
+                        &#169; 2020 ShubhamD Blogs.
                 </P>
             </FooterSocialIcons>
         </FooterSocialWrapper>
