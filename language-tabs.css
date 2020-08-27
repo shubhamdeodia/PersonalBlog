@@ -24,6 +24,13 @@
     top: 0;
   }
 
+  .gatsby-highlight pre[class*="language-"]{
+    background: black;
+    color: white;
+    padding: 20px;
+  }
+
+
 .gatsby-highlight pre[class~=language-javascript]:before,
 .gatsby-highlight pre[class~=language-js]:before {
     content:"js";
@@ -45,4 +52,10 @@
     content:"python";
     background: darkslategray;
     color:#fff
+}
+
+.js-error {
+  content:"js";
+  background:#fff;
+  color:red
 }

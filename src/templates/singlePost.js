@@ -11,11 +11,12 @@ export default function singlePost({ data }) {
     const seoImage = data.mdx.frontmatter.featureImage.childImageSharp.fluid.src
     const title = data.mdx.frontmatter.title
     const description = data.mdx.frontmatter.excerpt
+    const keywords = data.mdx.frontmatter.keywords
 
     return (
 
         <Container >
-            <SEO image={seoImage} title={title} description={description} />
+            <SEO image={seoImage} keywords={keywords} title={title} description={description} />
             <FeatureImage fluid={featureImage} />
             <Post>
                 <H1 margin='0 0 2rem 0'>{title}</H1>
@@ -35,6 +36,7 @@ export const query = graphql`
             excerpt
             slug
             title
+            keywords
             featureImage {
                 childImageSharp {
                     fluid(quality: 90) {    

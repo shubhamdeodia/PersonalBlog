@@ -88,7 +88,7 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
                     content: metaImage
                 }
             ].concat(
-                metaKeywords & metaKeywords.length > 0
+                metaKeywords && metaKeywords.length > 0
                     ? { name: 'keywords', content: metaKeywords.join(', ') }
                     : []
             )} />
