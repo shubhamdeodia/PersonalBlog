@@ -12,6 +12,17 @@ module.exports = {
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-react-svg',
         {
+            resolve: 'gatsby-plugin-google-fonts',
+            options: {
+                fonts: [
+                    'source sans pro\:300,400,400i,700',
+                    'Montserrat\:300,400,400i,700', // you can also specify font weights and styles
+                    'Roboto Mono'
+                ],
+                display: 'swap'
+            }
+        },
+        {
             resolve: 'gatsby-source-filesystem',
             options: {
                 name: 'pages',

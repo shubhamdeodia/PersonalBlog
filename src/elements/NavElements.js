@@ -60,7 +60,7 @@ export const NavElements = styled((props) => <Link {...props} >{props.children}<
         line-height: 1.125rem;
         font-weight: 400;
         text-decoration: none;
-        margin: 0 2rem;
+        margin-right: 2rem;
         color: ${(props) => props.theme.colors.dark1};
         &:hover,
         &:focus {

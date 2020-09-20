@@ -17,10 +17,10 @@ If you are testing any Jquery component in an NodeJs environment. You might have
 
 You can resolve this issue, In one of the following two ways
 
-1. Create a mock function wherever Jquery function call is being made
-2. Instantiate Jquery with a document object globally in your test environment
+1. Create a mock function - for mthods calls made to Jquery.
+2. Instantiate Jquery with a document object - globally in your test environment
 
-In this post, we will talk about the second approach
+In this post, we will talk about the second approach. To use this appraoch we will have to make use of [JSDOM](https://github.com/jsdom/jsdom) - which is nothing but a implemention of DOM and HTML standards that can be used with Node.js.
 
 
 First, let's install all the required dependencies
@@ -72,6 +72,6 @@ global.$ = $
 
 Notice, In the above code, we are only resolving Jquery after we have resolved JSDOM and extracted the window object.
 
-And the way we resolve Jquery, we provide it with the Window object in the fnction returned by Jquery module.
+And the way we resolve Jquery is we pass the window object to returning function provided by Jquery.
 
 Now, you are all set to use Jquery in an Nodejs env.

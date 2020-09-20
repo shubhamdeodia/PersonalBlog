@@ -1,0 +1,221 @@
+---
+title: Setting up Babel for React App
+slug: setup-babel-react
+date: 2020-09-05
+thumbnail: setup-babel-react.png
+readtime: 5min
+keywords: [ Babel, Babel 7, React, Config, babel.config.js, React App, Babel React Config ]
+featureImage: galway.jpg
+excerpt: Did you know, you can optimize the build process performance using caching in Babel?
+---
+
+What is Babel? How it works? How you can use for your React App?
+
+Let's answer each of this quetion one by one.
+
+**What is Babel ?**
+------------
+
+The official definition from [Documentation](https://babeljs.io/docs/en/7.5.0/) translates to: <br/>
+*You can write your Javascript code in any verison of ECMAScript and Babel will transpile it to an older (or specified version) of ECMAScript, so that you can run your Javascript code in the environment or Browser of your choice.*
+
+This is particularly helpful, when you want to target a browser which doesn't support the version of Javascript you are using to write your code. (Exmple: IE11 doesn't support ECMAScript 2015)
+
+> You can call babel a transpiler or a compiler or both, transpiler is nothing but a special type of compiler
+
+
+**How it works ?**
+------------
+
+Out of the box, babel does not do anything, it just parse the source code and output the code as it is, like : `const babel = code => code;`
+For Babel to do anything with your source code, you need to add plugins. These plugins are responsible for code tranformation and once the transformation is completed, it performs the code generation.
+
+As per Babel Documentation, there are two types of plugins:
+1. Transform Plugins - Which helps in the code transformation.
+2. Syntax Plugins - Which helps babel to parse specific types of syntax.
+
+So overall, babel essentially does three things (with the help of plugins):
+1. Parsing
+2. Transformation
+3. Code Generation
+ 
+
+
+> Babel parse the source code into a representation called as AST(Abstract Syntax Tree),You can read about more [here](https://medium.com/@makk.bit/babel-under-the-hood-63e3fb961243) 
+
+
+**How you can use it for your React App ?**
+--
+ 
+ As we now know, Babel can transpile our Javascript code in a targeted version of Javascript. But what about JSX ? Since JSX is nothing but the extension of Javascript (with XML), Babel does support it's transformation.
+
+To help us with the compilation of React specifix syntax, Babel has provided many [plugins](https://babeljs.io/docs/en/plugins) and [presets](https://babeljs.io/docs/en/presets).
+
+>Presets are nothing but set of plugins which share some common tasks for transpiling.
+
+Now that we have understood, how babel can help us in compilation for React Specific syntax,
+
+Let's install the dependencies, to create a fully functional config for an React App
+
+```shell
+npm install --save-dev 
+    @babel/core @babel/cli @babel/preset-env 
+    @babel/preset-react @babel/plugin-transform-runtime 
+    @babel/plugin-syntax-dynamic-import 
+    @babel/plugin-proposal-class-properties
+    babel-plugin-transform-react-remove-prop-types 
+    @babel/plugin-transform-react-inline-element
+    @babel/plugin-transform-react-constant-elements 
+    babel-plugin-jsx-remove-data-test-id
+```
+
+And now let's  create a `babel.config.js` at the root of your react project , copy the below code and understand what each plugins and preset in the code does. 
+
+```js
+//babel.config.js
+
+module.exports = (api) => {
+    // cache the result of babel config execution funtion for dev builds
+    api.cache.using(() => process.env.NODE_ENV === 'development');
+    return {
+        presets: [
+            [
+                '@babel/preset-env',{
+                "targets": {
+                    "chrome": "58",
+                    "ie": "11"
+                }
+            }
+            ],
+            [
+                '@babel/preset-react', {
+                    development: process.env.NODE_ENV === 'development'
+                }
+            ]
+
+        ],
+        plugins: [
+            '@babel/plugin-transform-runtime',
+            '@babel/plugin-syntax-dynamic-import',
+            ['@babel/plugin-proposal-class-properties', {
+                loose: true
+            }],
+
+        ],
+        env: {
+            // here we are removing all the proptypes validation from the prod build
+            production: {
+                only: ['src'],
+                plugins: [
+                    [
+                        'transform-react-remove-prop-types',
+                        {
+                            removeImport: true
+                        }
+                    ],
+                    '@babel/plugin-transform-react-inline-elements',
+                    '@babel/plugin-transform-react-constant-elements',
+                    [
+                        'babel-plugin-jsx-remove-data-test-id',
+                        {
+                            attributes: 'data-testid'
+                        }
+                    ]
+                ],
+
+            }
+        }
+    };
+};
+
+```
+
+
+Let's first understand, what problem does below code solve :
+```js
+api.cache.using(() => process.env.NODE_ENV === 'development');
+```
+
+if you are configuring your babel inside `babel.config.js` file, then you have luxury to export a function which returns the babel config object from this JS config file. 
+
+The above line of code, basically says,
+
+*Hey Babel, when I am using the development mode, cache the execution of the config function exported from  `babel.config.js`, so that, you can circumvent the re-execution of any plugin and presets in the config, after a file is compiled.*
+
+This line of code can help in boost the development build time, there are mutiple methods babel expose on this `api`, You can check them [here](https://babeljs.io/docs/en/config-files)
+
+
+Now, let's take a look at below code snippet:
+```js
+presets: [
+    [
+        '@babel/preset-env',{
+        "targets": {
+                "chrome": "58",
+                "ie": "11"
+            }
+        }
+    ],
+    [
+        '@babel/preset-react', {
+            development: process.env.NODE_ENV === 'development'
+        }
+    ]
+
+],
+plugins: [
+    '@babel/plugin-transform-runtime',
+    '@babel/plugin-syntax-dynamic-import',
+    ['@babel/plugin-proposal-class-properties', {
+        loose: true
+    }],
+
+],
+```
+
+Here we are spcifying some presets and plugins which we discuss earlier, let's see what some of them does.
+
+1. [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) : This is probably the most important preset, it tells babel, to transpile the code in the provided target environment, in our example, it's **chrome version 58** and **IE version 11**
+
+2. [@babel/preset-react](https://babeljs.io/docs/en/babel-preset-react) : This preset is set of all plugins , that will help you transform all the code related to React (and JSX), with the development option, you can tell to include **__self** and **__source** special [props](https://github.com/facebook/react/pull/4596) in the development build.
+
+I believe you got the idea, on how these plugins and presets can be used, You can checkout other plugins [here](https://babeljs.io/docs/en/plugins). Perhaps we will discuss about all the plugins we used here in a different post.
+
+One last thing, which I wanted show you is, How you can add some plugins or preset specific for particular build mode (i.e Development or Production).
+
+If you look at the below code snippet, we have made a new key entry `env`, this is where specify the the env build mode and add plugins or preset, that you wish to use.
+ 
+```js
+env: {
+    // here we are removing all the proptypes validation from the prod build
+    production: {
+        only: ['src'],
+        plugins: [
+            [
+                'transform-react-remove-prop-types',
+                {
+                    removeImport: true
+                }
+            ],
+            '@babel/plugin-transform-react-inline-elements',
+            '@babel/plugin-transform-react-constant-elements',
+            [
+                'babel-plugin-jsx-remove-data-test-id',
+                {
+                    attributes: 'data-testid'
+                }
+            ]
+        ],
+
+    }
+}
+```
+
+For example, I found below two plugins very useful in reducing the bloating in the production build.
+
+1. [transform-react-remove-prop-types](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types) : This plugin can remove the propTypes from the production build, which helps you save bandwidth.
+
+2. [babel-plugin-jsx-remove-data-test-id](https://github.com/coderas/babel-plugin-jsx-remove-data-test-id): If you are using any testing library and you are using some custom attributes on your element to perform some assertion, this plugin will remove that custom attributes from the production build, as you only need it for testing in development mode.
+
+
+In conclusion, we explored in breif - What is Babel? How it works? and Some of the plugins and preset that you can use to create a configuration which is efficient and powerfull for your React App.

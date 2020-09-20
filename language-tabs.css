@@ -59,3 +59,9 @@
   background:#fff;
   color:red
 }
+
+.gatsby-highlight pre[class~=language-shell]:before {
+  content:"shell";
+  background:grey;
+  color:#fff
+}

@@ -1,16 +1,15 @@
 export default {
     fonts: {
-        // main: 'Courier, "Courier New", monospace',
-        main: 'FS Albert Pro, Arial, Helvetica, sans-serif',
+        main: 'FS Albert Pro, source sans pro',
         code: 'Roboto Mono, monospace'
     },
     colors: {
-        main1: '#ee4938',
+        main1: 'hsl(6, 84%, 58%)',
         main2: 'hsl(207,70%,94%)',
         dark1: 'hsl(227,2%,12%)',
-        dark2: '#3a3a3a',
+        dark2: 'hsl(0, 0%, 23%)',
         dark3: 'hsl(227,2%,64%)',
-        light1: 'hsl(0,0%,97%)',
+        light1: 'hsl(0,0%,99%)',
         light2: 'hsl(0,0%,99%)'
     },
     breakpoints: {
