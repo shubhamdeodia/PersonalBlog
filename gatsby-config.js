@@ -3,8 +3,8 @@ module.exports = {
         title: 'ShubhamD Blog',
         description: 'Super simple blogs on everything related to UI',
         author: '@shubhamD',
-        image: './src/images/radio.jpg',
-        url: 'https://github.com/shubhamdeodia'
+        image: 'https://shubhamdeodia.github.io/shubhamD/static/media/avatar.cfa0a33b.jpg',
+        url: 'shubhamd.me'
     },
     plugins: [
         'gatsby-transformer-sharp',
