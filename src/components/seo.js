@@ -8,7 +8,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-// import favicon from '../images/favico.png'
+import favicon from '../images/favico.png'
 function SEO({ description, keywords, url, author, lang, image, title }) {
     const { site } = useStaticQuery(
         graphql`
@@ -39,6 +39,9 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
             htmlAttributes={{
                 lang
             }}
+            link={[
+                { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` }
+            ]}
             title={title}
             titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[

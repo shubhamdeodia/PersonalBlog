@@ -29,13 +29,13 @@ const Footer = () => {
     return (<FooterWrapper >
         <FooterSocialWrapper>
             <FooterSocialIcons>
-                <a href='https://linkedin.com/shubham.deodia' target='_blank' rel='noopener noreferrer '>
+                <a href='https://www.linkedin.com/in/shubham-deodia/' target='_blank' rel='noopener noreferrer '>
                     <Linkedin />
                 </a>
                 <a href='https://facebook.com/shubham.deodia' target='_blank' rel='noopener noreferrer '>
                     <Facebook />
                 </a>
-                <a href='https://facebook.com/shubham.deodia' target='_blank' rel='noopener noreferrer '>
+                <a href='https://www.instagram.com/shubham.deodia/' target='_blank' rel='noopener noreferrer '>
                     <Instagram />
                 </a>
                 <P
