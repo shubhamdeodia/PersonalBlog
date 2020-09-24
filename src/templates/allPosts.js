@@ -20,7 +20,7 @@ const allPosts = ({ pageContext, data }) => {
     return (
 
         <Container>
-            <SEO title='Home' />
+            <SEO title='ShubhamD Blog' />
             {/* <FeatureImage showParticles /> */}
             <Content>
                 {/* <H1 textAlign='center' color='dark2' margin='0 0 1rem 0'>Welcome to my Blog</H1>
