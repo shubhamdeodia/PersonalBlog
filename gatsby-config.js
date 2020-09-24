@@ -2,9 +2,9 @@ module.exports = {
     siteMetadata: {
         title: 'ShubhamD Blog',
         description: 'Super simple blogs on everything related to UI',
-        author: '@shubhamD',
+        author: 'Shubham Deodia',
         image: 'https://shubhamdeodia.github.io/shubhamD/static/media/avatar.cfa0a33b.jpg',
-        url: 'shubhamd.me'
+        url: 'blog.shubhamd.me'
     },
     plugins: [
         'gatsby-transformer-sharp',

@@ -34,15 +34,15 @@ export default function HTML(props) {
                         alignItems: 'center',
                         backgroundColor: '#FAFAFA',
                         display: 'flex',
-                        width: '100vw',
-                        height: '100vh',
+                        width: '100%',
+                        height: '100%',
                         justifyContent: 'center',
                         position: 'absolute',
                         left: 0,
                         top: 0,
                         right: 0,
                         bottom: 0,
-                        zIndex: -9999
+                        zIndex: 99999
                     }}>
                     <LoaderSVG />
                 </div>
