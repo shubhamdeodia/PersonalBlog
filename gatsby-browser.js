@@ -14,7 +14,7 @@ import './language-tabs.css'
 export const onInitialClientRender = () => {
     setTimeout(function() {
         document.getElementById('___loader').style.display = 'none'
-    }, 1500)
+    }, 1000)
 }
 
 const GlobalStyles = createGlobalStyle`
