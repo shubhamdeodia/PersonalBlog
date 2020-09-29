@@ -1,0 +1,102 @@
+---
+title: Quick start guide to using new JSX feature
+slug: use-jsx-without-react-import
+date: 2020-09-28
+thumbnail: use-jsx-without-react-import.png
+readtime: 2min
+keywords: [ JSX, JSX transform, React, React 17, Config, babel.config.js, React App, Babel React Config ]
+featureImage: galway_second.jpg
+excerpt: Did you know, you can now use JSX without importing the React ?
+---
+
+If you are looking for an in depth exaplantion, please refer to the official documentation for [JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)
+
+
+Use this guide, if you want to get started using the new JSX feature without importing the react quickly.
+
+**How you can use React's new JSX transform feature**
+--
+Recently React has introduce new [JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) feature. This feature basically helps you transform JSX without importing React.
+
+Before React 17,  Babel transfrom tranform JSX into a code like `React.createElement(...)`. But with this new tranform feature, the transformation is done as shown below
+
+```js
+
+function App() {
+  return <h1>Hello World</h1>;
+}
+
+// ******Transforms to********
+
+// Inserted by a compiler (don't import it yourself!)
+import {jsx as _jsx} from 'react/jsx-runtime';
+
+function App() {
+  return _jsx('h1', { children: 'Hello world' });
+}
+```
+
+The `react/jsx-runtime` is available from `react 17.0.0-rc.2` and `react-dom 17.0.0-rc.2` onwards. To tranform it using babel we need `babel v7.9.0` and above.  
+
+To use this new feature, we will have to install new dependcies.
+
+```shell
+npm update @babel/core @babel/preset-react
+npm install react@17.0.0-rc.2 react-dom@17.0.0-rc.2
+```
+<br/>
+
+Now we will use the holistic Babel config for React, which we create in the previous post and tweak it to use the latest JSX tranform feature.
+
+```js
+//babel.config.js
+return {
+    presets: [
+        [
+            '@babel/preset-env', {
+                'targets': 'defaults'
+            }
+        ],
+        [
+            '@babel/preset-react', {
+                // This is what you add
+                runtime: 'automatic',
+                development: process.env.NODE_ENV === 'development'
+            }
+        ]
+            plugins: [
+            '@babel/plugin-transform-runtime',
+            '@babel/plugin-syntax-dynamic-import',
+            ['@babel/plugin-proposal-class-properties', {
+                loose: true
+            }],
+
+        ],
+        env: {
+            // here we are removing all the proptypes validation from the prod build
+            production: {
+                only: ['src'],
+                plugins: [
+                    [
+                        'transform-react-remove-prop-types',
+                        {
+                            removeImport: true
+                        }
+                    ],
+                    '@babel/plugin-transform-react-inline-elements',
+                    '@babel/plugin-transform-react-constant-elements',
+                    [
+                        'babel-plugin-jsx-remove-data-test-id',
+                        {
+                            attributes: 'data-testid'
+                        }
+                    ]
+                ],
+
+            }
+        }
+
+    ]
+```
+
+Now with this config, you can use JSX without importing React.
