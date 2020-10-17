@@ -11,11 +11,11 @@ import { Table, Code } from './src/components'
 import { preToCodeBlock } from 'mdx-utils'
 import './language-tabs.css'
 
-export const onInitialClientRender = () => {
-    setTimeout(function() {
-        document.getElementById('___loader').style.display = 'none'
-    }, 1000)
-}
+// export const onInitialClientRender = () => {
+//     setTimeout(function() {
+//         document.getElementById('___loader').style.display = 'none'
+//     }, 1000)
+// }
 
 const GlobalStyles = createGlobalStyle`
     * {

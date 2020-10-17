@@ -1,6 +1,6 @@
 export default {
     fonts: {
-        main: 'FS Albert Pro, source sans pro',
+        main: 'source sans pro, FS Albert Pro',
         code: 'Roboto Mono, monospace'
     },
     colors: {

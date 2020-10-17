@@ -4,6 +4,7 @@ export const ArticleWrapper = styled.div`
     display:flex;
 
     @media ${(props) => props.theme.breakpoints.tablet}{
+        width:100%;
        flex-direction: column;
     }
 
@@ -16,7 +17,7 @@ export const CardImageWrapper = styled.div `
         min-width: 320px;
         overflow: hidden;
         @media ${(props) => props.theme.breakpoints.tablet}{
-      
+         
             max-height: 210px;
             min-width: 100%;
         }

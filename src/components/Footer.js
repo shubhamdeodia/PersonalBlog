@@ -43,7 +43,7 @@ const Footer = () => {
                     weight='normal'
                     size='xsmall'
                     color='dark3'>
-                        &#169; 2020 ShubhamD Blogs.
+                        No &#169; Issues, Reuse as you like
                 </P>
             </FooterSocialIcons>
         </FooterSocialWrapper>
