@@ -32,7 +32,7 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
     const metaImage = image || site.siteMetadata.image
 
     const metaUrl = url || site.siteMetadata.url
-    const metaKeywords = keywords || ['gatsby', 'blog', 'gatsby MDX blog']
+    const metaKeywords = keywords || ['Front-end developer, JavaScript developer, HTML, HTML5, CSS3, CSS, JavaScript, ReactJS, NodeJS, React, jQuery, Shubham Deodia, Shubham Deodia Blog, Blog, JavaScript Blog, CSS Blog, HTML Blog']
 
     return (
         <Helmet
@@ -49,7 +49,10 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
                     name: 'description',
                     content: metaDescription
                 },
-
+                {
+                    name: 'author',
+                    content: site.siteMetadata.author
+                },
                 {
                     name: 'twitter:card',
                     content: 'summary'
