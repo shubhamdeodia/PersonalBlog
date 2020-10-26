@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Container, ContentCard, Content, FeatureImage, Pagination } from '../components'
-import { H1, P } from '../elements'
+import { ContentCard, Content, Pagination } from '../components'
 import SEO from '../components/seo'
 
 const allPosts = ({ pageContext, data }) => {
@@ -19,7 +18,7 @@ const allPosts = ({ pageContext, data }) => {
 
     return (
 
-        <Container>
+        <>
             <SEO title='Home' />
             {/* <FeatureImage showParticles /> */}
             <Content>
@@ -40,7 +39,7 @@ const allPosts = ({ pageContext, data }) => {
             </Content>
             <Pagination isFirst={isFirst} isLast={isLast} prevPage={prevPage} nextPage={nextPage} />
 
-        </Container>
+        </>
 
     )
 }

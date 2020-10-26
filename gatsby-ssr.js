@@ -6,20 +6,10 @@
 import React from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import Theme from './src/themes/theme'
-
 import { MDXProvider } from '@mdx-js/react'
-import { Table, Code } from './src/components'
+import { Table, Code, Layout } from './src/components'
 import { preToCodeBlock } from 'mdx-utils'
 import './language-tabs.css'
-
-export const onRenderBody = (
-    { setHeadComponents }
-) => {
-    setHeadComponents([
-        <title key='title'>ShubhamD Blogs</title>,
-        <script key='pathseg' src='https://cdn.rawgit.com/progers/pathseg/master/pathseg.js' />
-    ])
-}
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -52,6 +42,14 @@ const components = {
     wrapper: ({ children }) => <>{children}</>
 }
 
+// wrapping all pages with layout
+export const wrapPageElement = ({ element }) => (
+    <Layout >
+        {element}
+    </Layout>
+)
+
+// wrapping all elements with providers
 export const wrapRootElement = ({ element }) => (
     <MDXProvider components={components}>
         <ThemeProvider theme={Theme}>

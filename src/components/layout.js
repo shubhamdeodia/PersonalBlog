@@ -2,10 +2,11 @@ import React from 'react'
 import { ContainerWrapper } from '../elements'
 import { Nav, Footer } from '../components'
 
-export const Container = ({ children }) => {
+export const Layout = ({ children }) => {
     return (<ContainerWrapper>
         <Nav />
         {children}
         <Footer />
-    </ContainerWrapper>)
+    </ContainerWrapper>
+    )
 }
