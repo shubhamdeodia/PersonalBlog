@@ -10,7 +10,7 @@ export const Thumbnail = ({ imgName }) => {
           allImageSharp {
             edges {
               node {
-                fluid(maxWidth: 320) {
+                fluid(quality: 30) {
                   ...GatsbyImageSharpFluid
                   originalName
                 }
