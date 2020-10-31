@@ -6,7 +6,7 @@ import loadable from '@loadable/component'
 
 // import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Backdrop, H1, Centered } from '../elements'
-// import { Post, FeatureImage } from '../components'
+import { FeatureImage } from '../components'
 import SEO from '../components/seo'
 
 const Post = loadable(() =>
@@ -26,9 +26,6 @@ const MDXRenderer = loadable(() =>
     </Backdrop>
 
     ) }
-)
-const FeatureImage = loadable(() =>
-    import('../components').then((module) => ({ default: module.FeatureImage }))
 )
 
 export default function singlePost({ data }) {
