@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import React from 'react'
+import React, { Suspense } from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { H1 } from '../elements'
@@ -20,7 +20,11 @@ export default function singlePost({ data }) {
             <FeatureImage fluid={featureImage} />
             <Post>
                 <H1 margin='0 0 2rem 0'>{title}</H1>
-                <MDXRenderer>{data.mdx.body}</MDXRenderer>
+
+                <Suspense fallback={<div>Loading...</div>}>
+                    <MDXRenderer>{data.mdx.body}</MDXRenderer>
+                </Suspense>
+
             </Post>
         </>
 

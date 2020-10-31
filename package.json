@@ -16,6 +16,7 @@
     "gatsby-plugin-nprogress": "^2.3.13",
     "gatsby-plugin-offline": "^3.2.13",
     "gatsby-plugin-page-progress": "^2.1.1",
+    "gatsby-plugin-preload-fonts": "^1.2.29",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.6.14",
@@ -46,6 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.13",
     "prettier": "2.0.5",
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
@@ -55,6 +57,9 @@
   "keywords": [
     "gatsby"
   ],
+  "browserslist": [
+    "Chrome > 80"
+  ],
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
@@ -62,6 +67,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "preload-fonts": "gatsby-preload-fonts",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint:css": "stylelint ./src/**/*.js"

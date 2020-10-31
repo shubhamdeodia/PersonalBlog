@@ -10,13 +10,19 @@ module.exports = {
         'gatsby-transformer-sharp',
         'gatsby-plugin-sharp',
         'gatsby-plugin-react-helmet',
+        {
+            resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+            options: {
+                devMode: true
+            }
+        },
         'gatsby-plugin-react-svg',
+        'gatsby-plugin-preload-fonts',
         {
             resolve: 'gatsby-plugin-google-fonts',
             options: {
                 fonts: [
                     'source sans pro\:300,400,400i,700',
-                    'Montserrat\:300,400,400i,700', // you can also specify font weights and styles
                     'Roboto Mono'
                 ],
                 display: 'swap'
@@ -73,16 +79,6 @@ module.exports = {
                         }
                     }
                 ]
-            }
-        },
-        {
-            resolve: 'gatsby-plugin-web-font-loader',
-            options: {
-                custom: {
-                    families: ['FS Albert Pro'],
-                    // dont put fonts in the same location as font.css
-                    urls: ['font.css']
-                }
             }
         }
     ]
