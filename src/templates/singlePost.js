@@ -1,32 +1,29 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react'
 import { graphql } from 'gatsby'
-import Loader from 'react-loader-spinner'
-import loadable from '@loadable/component'
-
-// import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Backdrop, H1, Centered } from '../elements'
-import { FeatureImage } from '../components'
+import { FeatureImage, Post } from '../components'
 import SEO from '../components/seo'
 
-const Post = loadable(() =>
-    import('../components').then((module) => ({ default: module.Post }))
-)
-const MDXRenderer = loadable(() =>
-    import('gatsby-plugin-mdx').then((module) => ({ default: module.MDXRenderer })), {
-    fallback: (<Backdrop>
-        <Centered>
-            <Loader
-                type='TailSpin'
-                color='#EE4C3A'
-                height={100}
-                width={100}
-                timeout={3000} />
-        </Centered>
-    </Backdrop>
+// const Post = loadable(() =>
+//     import('../components').then((module) => ({ default: module.Post }))
+// )
+// const MDXRenderer = loadable(() =>
+//     import('gatsby-plugin-mdx').then((module) => ({ default: module.MDXRenderer })), {
+//     fallback: (<Backdrop>
+//         <Centered>
+//             <Loader
+//                 type='TailSpin'
+//                 color='#EE4C3A'
+//                 height={100}
+//                 width={100}
+//                 timeout={3000} />
+//         </Centered>
+//     </Backdrop>
 
-    ) }
-)
+//     ) }
+// )
 
 export default function singlePost({ data }) {
     const featureImage = data.mdx.frontmatter.featureImage.childImageSharp.fluid
