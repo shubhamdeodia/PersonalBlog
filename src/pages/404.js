@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Post, FeatureImage, Layout } from '../components'
+import { Post, FeatureImage } from '../components'
 import { H1 } from '../elements'
 
 export default function notFound({ data }) {
