@@ -1,19 +1,33 @@
 /* eslint-disable react/jsx-pascal-case */
-import React, { Suspense, lazy } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Loader from 'react-loader-spinner'
+import loadable from '@loadable/component'
+
 // import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Backdrop, H1, Centered } from '../elements'
 // import { Post, FeatureImage } from '../components'
 import SEO from '../components/seo'
 
-const Post = lazy(() =>
+const Post = loadable(() =>
     import('../components').then((module) => ({ default: module.Post }))
 )
-const MDXRenderer = lazy(() =>
-    import('gatsby-plugin-mdx').then((module) => ({ default: module.MDXRenderer }))
+const MDXRenderer = loadable(() =>
+    import('gatsby-plugin-mdx').then((module) => ({ default: module.MDXRenderer })), {
+    fallback: (<Backdrop>
+        <Centered>
+            <Loader
+                type='TailSpin'
+                color='#EE4C3A'
+                height={100}
+                width={100}
+                timeout={3000} />
+        </Centered>
+    </Backdrop>
+
+    ) }
 )
-const FeatureImage = lazy(() =>
+const FeatureImage = loadable(() =>
     import('../components').then((module) => ({ default: module.FeatureImage }))
 )
 
@@ -26,27 +40,14 @@ export default function singlePost({ data }) {
 
     return (
 
-        <Suspense fallback={
-            <Backdrop>
-                <Centered>
-                    <Loader
-                        type='TailSpin'
-                        color='#EE4C3A'
-                        height={100}
-                        width={100}
-                        timeout={3000} />
-                </Centered>
-            </Backdrop>
-        }>
+        <>
             <SEO image={seoImage} keywords={keywords} title={title} description={description} />
             <FeatureImage fluid={featureImage} />
             <Post>
                 <H1 margin='0 0 2rem 0'>{title}</H1>
-
                 <MDXRenderer>{data.mdx.body}</MDXRenderer>
-
             </Post>
-        </Suspense>
+        </>
 
     )
 }

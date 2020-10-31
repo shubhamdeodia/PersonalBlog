@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Shubham Deodia <shubham.deodia@gmail.com>",
   "dependencies": {
+    "@loadable/component": "^5.14.1",
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
     "babel-plugin-styled-components": "^1.11.1",
