@@ -11,10 +11,7 @@ module.exports = {
         'gatsby-plugin-sharp',
         'gatsby-plugin-react-helmet',
         {
-            resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-            options: {
-                devMode: true
-            }
+            resolve: 'gatsby-plugin-webpack-bundle-analyser-v2'
         },
         'gatsby-plugin-react-svg',
         'gatsby-plugin-preload-fonts',
