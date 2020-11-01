@@ -4,14 +4,16 @@ module.exports = {
         description: 'Super simple blogs on everything related to UI',
         author: 'Shubham Deodia',
         image: 'https://shubhamdeodia.github.io/shubhamD/static/media/avatar.cfa0a33b.jpg',
-        url: 'blog.shubhamd.me'
+        url: 'https://blog.shubhamd.me',
+        siteUrl: 'https://blog.shubhamd.me'
     },
     plugins: [
         'gatsby-transformer-sharp',
         'gatsby-plugin-sharp',
+        'gatsby-plugin-sitemap',
         'gatsby-plugin-react-helmet',
-        'gatsby-plugin-react-svg',
         'gatsby-plugin-preload-fonts',
+        'gatsby-plugin-react-svg',
         {
             resolve: 'gatsby-plugin-google-fonts',
             options: {
