@@ -5,7 +5,7 @@ import { FeatureImageWrapper } from '../elements'
 export const FeatureImage = ({ fluid }) => {
     return (
         <FeatureImageWrapper>
-            <Img fluid={fluid} style={{
+            <Img fluid={fluid} alt='feature image' style={{
                 position: 'absolute',
                 left: 0,
                 top: 0,

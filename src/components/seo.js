@@ -32,7 +32,7 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
     const metaImage = image || site.siteMetadata.image
 
     const metaUrl = url || site.siteMetadata.url
-    const metaKeywords = keywords || ['Front-end developer, JavaScript developer, HTML, HTML5, CSS3, CSS, JavaScript, ReactJS, NodeJS, React, jQuery, Shubham Deodia, Shubham Deodia Blog, Shubham\'s Blog, JavaScript Blog, CSS Blog, HTML Blog']
+    const metaKeywords = keywords || ['Shubham Deodia, Front-end developer, JavaScript developer, HTML, HTML5, CSS3, CSS, JavaScript, ReactJS, NodeJS, React, jQuery, Shubham Deodia, Shubham Deodia Blog, Shubham\'s Blog, JavaScript Blog, CSS Blog, HTML Blog']
 
     return (
         <Helmet

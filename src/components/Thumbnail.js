@@ -28,7 +28,7 @@ export const Thumbnail = ({ imgName }) => {
                     return null
                 }
                 return (
-                    <Img fluid={image.node.fluid} />
+                    <Img alt='thumbnail image' fluid={image.node.fluid} />
                 )
             }} />
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { CardContentWrapper, CardWrapper, P, H2, ArticleWrapper, CardImageWrapper, DateReadTimeWrapper, ClockWrapper } from '../elements'
 import { Link } from 'gatsby'
-import { Button, Thumbnail } from '../components'
+import { Thumbnail } from '../components'
 import Clock from '../images/clock.svg'
 
 export const ContentCard = ({ date, title, excerpt, slug, readtime }) => {
@@ -43,9 +43,6 @@ export const ContentCard = ({ date, title, excerpt, slug, readtime }) => {
                             {excerpt}{'...  '}
                             <Link to={slug}>read more</Link>
                         </P>
-                        {/* <Button to={slug}>
-                                Read More
-                        </Button> */}
                     </CardContentWrapper>
 
                 </ArticleWrapper>
