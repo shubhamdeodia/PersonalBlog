@@ -16,7 +16,7 @@ My Personal Blog site, Where I write blogs in simple language related to front-e
 ## [Live Demo](https://blog.shubhamd.me)
 
 ## 🚀 Screenshot
-![alt text](images/blog.jpg)
+![blog screenshot](/images/blog.jpg "blog screenshot")
 
 ## 🚀 Quick start
 
