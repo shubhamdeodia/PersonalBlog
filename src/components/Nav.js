@@ -1,5 +1,11 @@
-import React from 'react'
-import { NavWrapper, NavBar, NavElements, NavElementsContainer, NavLogo } from '../elements'
+import React from 'react';
+import {
+    NavWrapper,
+    NavBar,
+    NavElements,
+    NavElementsContainer,
+    NavLogo
+} from '../elements';
 
 const Nav = () => {
     // const data = useStaticQuery(graphql`
@@ -14,15 +20,20 @@ const Nav = () => {
 
     return (
         <NavWrapper>
-            <NavBar >
-                <NavLogo to='/'>{ '{ shubhamd }' }</NavLogo>
+            <NavBar>
+                <NavLogo to="/">{'{ shubhamd }'}</NavLogo>
                 <NavElementsContainer>
-                    <NavElements to='/'>Blog</NavElements>
-                    <NavElements target='_blank' to='https://shubhamdeodia.github.io/shubhamD/'>About Me</NavElements>
+                    <NavElements to="/">Blog</NavElements>
+                    <NavElements
+                        target="_blank"
+                        to="https://shubhamdeodia.github.io/shubhamD/"
+                    >
+                        About Me
+                    </NavElements>
                 </NavElementsContainer>
             </NavBar>
         </NavWrapper>
-    )
-}
+    );
+};
 
-export { Nav }
+export { Nav };

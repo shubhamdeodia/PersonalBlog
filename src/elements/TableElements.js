@@ -1,7 +1,6 @@
-
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const TableWrapper = styled.div`
     overflow-x: auto;
-    margin-top: 2rem
-`
+    margin-top: 2rem;
+`;

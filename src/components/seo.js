@@ -5,10 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
-import favicon from '../images/favico.png'
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
+import favicon from '../images/favico.png';
+
 function SEO({ description, keywords, url, author, lang, image, title }) {
     const { site } = useStaticQuery(
         graphql`
@@ -17,31 +18,31 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
                     siteMetadata {
                         title
                         description
-                        author,
-                        image,
+                        author
+                        image
                         url
                     }
                 }
             }
         `
-    )
+    );
 
-    const metaDescription = description || site.siteMetadata.description
-    const metaAuthor = author || site.siteMetadata.author
+    const metaDescription = description || site.siteMetadata.description;
+    const metaAuthor = author || site.siteMetadata.author;
 
-    const metaImage = image || site.siteMetadata.image
+    const metaImage = image || site.siteMetadata.image;
 
-    const metaUrl = url || site.siteMetadata.url
-    const metaKeywords = keywords || ['Shubham Deodia, Front-end developer, JavaScript developer, HTML, HTML5, CSS3, CSS, JavaScript, ReactJS, NodeJS, React, jQuery, Shubham Deodia, Shubham Deodia Blog, Shubham\'s Blog, JavaScript Blog, CSS Blog, HTML Blog']
+    const metaUrl = url || site.siteMetadata.url;
+    const metaKeywords = keywords || [
+        "Shubham Deodia, Front-end developer, JavaScript developer, HTML, HTML5, CSS3, CSS, JavaScript, ReactJS, NodeJS, React, jQuery, Shubham Deodia, Shubham Deodia Blog, Shubham's Blog, JavaScript Blog, CSS Blog, HTML Blog"
+    ];
 
     return (
         <Helmet
             htmlAttributes={{
                 lang
             }}
-            link={[
-                { rel: 'shortcut icon', type: 'image/png', href: `${favicon}` }
-            ]}
+            link={[{ rel: 'shortcut icon', type: 'image/png', href: `${favicon}` }]}
             title={title}
             titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[
@@ -97,14 +98,15 @@ function SEO({ description, keywords, url, author, lang, image, title }) {
                 metaKeywords && metaKeywords.length > 0
                     ? { name: 'keywords', content: metaKeywords.join(', ') }
                     : []
-            )} />
-    )
+            )}
+        />
+    );
 }
 
 SEO.defaultProps = {
     lang: 'en',
     meta: [],
     description: ''
-}
+};
 
-export default SEO
+export default SEO;

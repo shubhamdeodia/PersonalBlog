@@ -1,25 +1,24 @@
 /* eslint-disable react/jsx-pascal-case */
-import React from 'react'
-import { graphql } from 'gatsby'
-import { ContentCard, Content, Pagination } from '../components'
-import SEO from '../components/seo'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { ContentCard, Content, Pagination } from '../components';
+import SEO from '../components/seo';
 
 const allPosts = ({ pageContext, data }) => {
-    const { currentPage, numPages } = pageContext
-    const isFirst = currentPage === 1
+    const { currentPage, numPages } = pageContext;
+    const isFirst = currentPage === 1;
 
-    const isLast = currentPage === numPages
+    const isLast = currentPage === numPages;
 
-    const prevPage = currentPage - 1 === 1 ? '/' : `${currentPage - 1}`
+    const prevPage = currentPage - 1 === 1 ? '/' : `${currentPage - 1}`;
 
-    const nextPage = `/${currentPage + 1}`
+    const nextPage = `/${currentPage + 1}`;
 
-    const posts = data.allMdx.edges
+    const posts = data.allMdx.edges;
 
     return (
-
         <>
-            <SEO title='Home' />
+            <SEO title="Home" />
             {/* <FeatureImage showParticles /> */}
             <Content>
                 {/* <H1 textAlign='center' color='dark2' margin='0 0 1rem 0'>Welcome to my Blog</H1>
@@ -32,23 +31,29 @@ const allPosts = ({ pageContext, data }) => {
                         title={post.node.frontmatter.title}
                         excerpt={post.node.frontmatter.excerpt}
                         readtime={post.node.frontmatter.readtime}
-                        slug={post.node.frontmatter.slug} />
-
+                        slug={post.node.frontmatter.slug}
+                    />
                 ))}
-
             </Content>
-            <Pagination isFirst={isFirst} isLast={isLast} prevPage={prevPage} nextPage={nextPage} />
-
+            <Pagination
+                isFirst={isFirst}
+                isLast={isLast}
+                prevPage={prevPage}
+                nextPage={nextPage}
+            />
         </>
+    );
+};
 
-    )
-}
-
-export default allPosts
+export default allPosts;
 
 export const pageQuery = graphql`
-    query AllPostsQuery($skip: Int!, $limit: Int!){
-        allMdx(limit: $limit, skip: $skip, sort: {fields: frontmatter___date, order: DESC}) {
+    query AllPostsQuery($skip: Int!, $limit: Int!) {
+        allMdx(
+            limit: $limit
+            skip: $skip
+            sort: { fields: frontmatter___date, order: DESC }
+        ) {
             edges {
                 node {
                     frontmatter {
@@ -61,6 +66,5 @@ export const pageQuery = graphql`
                 }
             }
         }
-
     }
-`
+`;

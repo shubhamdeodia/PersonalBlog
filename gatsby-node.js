@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 // /**
 //  * Implement Gatsby's Node APIs in this file.
 //  *
@@ -11,36 +11,34 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
     if (getConfig().mode === 'production') {
         actions.setWebpackConfig({
             devtool: false
-        })
+        });
     }
-}
+};
 
-exports.createPages = async({ actions, graphql }) => {
-    const { createPage } = actions
+exports.createPages = async ({ actions, graphql }) => {
+    const { createPage } = actions;
     const { data } = await graphql(`
-              {
-                allMdx(sort: {fields: frontmatter___date, order: DESC}) {
-                    edges {
-                      node {
+        {
+            allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+                edges {
+                    node {
                         id
                         frontmatter {
-                          slug
+                            slug
                         }
-                      }
                     }
-                  }
-              }
-            `)
+                }
+            }
+        }
+    `);
 
     // create paginated pages for post
-    const postPerPage = 3
-    const numPages = Math.ceil(data.allMdx.edges.length / postPerPage)
+    const postPerPage = 3;
+    const numPages = Math.ceil(data.allMdx.edges.length / postPerPage);
 
     Array.from({ length: numPages }).forEach((_, index) => {
         createPage({
-            path: index === 0
-                ? '/'
-                : `/${index + 1}`,
+            path: index === 0 ? '/' : `/${index + 1}`,
             component: path.resolve(__dirname, './src/templates/allPosts.js'),
             context: {
                 limit: postPerPage,
@@ -48,19 +46,19 @@ exports.createPages = async({ actions, graphql }) => {
                 numPages,
                 currentPage: index + 1
             }
-        })
-    })
+        });
+    });
 
     // create single blog post
 
     data.allMdx.edges.forEach((edge) => {
-        const slug = edge.node.frontmatter.slug
-        const id = edge.node.id
+        const { slug } = edge.node.frontmatter;
+        const { id } = edge.node;
 
         createPage({
             path: slug,
             component: path.resolve(__dirname, './src/templates/singlePost.js'),
             context: { id }
-        })
-    })
-}
+        });
+    });
+};

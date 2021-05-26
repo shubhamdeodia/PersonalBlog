@@ -1,35 +1,37 @@
-import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
+import { getImage, GatsbyImage, getSrc } from 'gatsby-plugin-image';
 
 export const Thumbnail = ({ imgName }) => {
     return (
         <StaticQuery
             query={graphql`
-        query {
-          allImageSharp {
-            edges {
-              node {
-                fluid(quality: 30) {
-                  ...GatsbyImageSharpFluid
-                  originalName
+                query {
+                    allImageSharp {
+                        nodes {
+                            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+                            parent {
+                                ... on File {
+                                    name
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            }
-          }
-        }
-      `}
+            `}
             render={(data) => {
-                const image = data.allImageSharp.edges.find(
-                    (edge) => edge.node.fluid.originalName === imgName
-                )
+                const imageData = data.allImageSharp.nodes.find((node) => {
+                    return node.parent.name === imgName.split('.')[0];
+                });
+
+                const image = getImage(imageData);
+                const imageSrc = getSrc(imageData);
 
                 if (!image) {
-                    return null
+                    return null;
                 }
-                return (
-                    <Img alt='thumbnail image' fluid={image.node.fluid} />
-                )
-            }} />
-    )
-}
+                return <GatsbyImage image={image} alt="thumbnail image" />;
+            }}
+        />
+    );
+};

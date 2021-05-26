@@ -3,13 +3,15 @@ module.exports = {
         title: 'ShubhamD Blog',
         description: 'Super simple blogs on everything related to UI',
         author: 'Shubham Deodia',
-        image: 'https://shubhamdeodia.github.io/shubhamD/static/media/avatar.cfa0a33b.jpg',
+        image:
+            'https://shubhamdeodia.github.io/shubhamD/static/media/avatar.cfa0a33b.jpg',
         url: 'https://blog.shubhamd.me',
         siteUrl: 'https://blog.shubhamd.me'
     },
     plugins: [
-        'gatsby-transformer-sharp',
+        'gatsby-plugin-image',
         'gatsby-plugin-sharp',
+        'gatsby-transformer-sharp',
         'gatsby-plugin-sitemap',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-preload-fonts',
@@ -17,10 +19,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-google-fonts',
             options: {
-                fonts: [
-                    'source sans pro\:300,400,400i,700',
-                    'Roboto Mono'
-                ],
+                fonts: ['source sans pro:300,400,400i,700', 'Roboto Mono'],
                 display: 'swap'
             }
         },
@@ -78,4 +77,4 @@ module.exports = {
             }
         }
     ]
-}
+};
