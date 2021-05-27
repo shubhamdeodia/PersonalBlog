@@ -1,0 +1,171 @@
+---
+title: Best practises to implement when using Jest and RTL
+slug: jest-rtl-best-practises
+date: 2021-05-27
+thumbnail: jest-rtl-best-practises.jpg
+readtime: 4min
+keywords: [ Jest, RTL, React Testing Library, Best practises ]
+featureImage: 2382681.jpeg
+excerpt: Unit test are really important to gain confidense over your code, lets see how we can write them smartly
+---
+
+At my current organization, we recently decided to use Jest and React Testing Library as our defualt unit testing framewrok.
+
+As a principal developer one of my responsibility was to determine the best practises that we incorporate in our unit test.
+
+So below are some of the points which we agreed upon:
+
+
+
+**1. Use *data-testid* or *role* attribute to to select your element**
+------------
+
+Adding your custom attribute like data-testid to select your element make your test resilent to changes.
+
+For example, if you are trying to test for a button and you query it by its label, this may cause your test to break in the future if UX or PM decides to change the button's label.
+
+Hence, It is generally a good idea to use custom selectors like data-testid.
+
+```js
+import {render} from '@testing-library/react'
+
+const Button = <button type="button" data-testid="submit-button"> Submit </button>
+
+
+const{ getByTestId } = render(<Button/>)
+
+getByTestId('submit-button')
+
+//you can be creative and add some prefix to your attributes to make it's use more clear to other developers
+
+const button = <button type="button" data-testid="prtui-test-submit-button"> Submit </button>
+```
+
+
+You can also use role attribute on the element to select it.
+
+```js  
+import {render} from '@testing-library/react'
+
+const alert = <span role="alert"> Invalid Input </span>
+const{ getByRole} = render(<Button/>)
+
+//Notice we are using regex to match the text content because are text assertion are case sensitive.
+expect(getByROle('alert')).toHaveTextContent(/alert/i)
+```
+
+
+Finally, if you are worried about production build getting polluted with such attributes we have solution for it as well. We can use babel plugin, to get rid of such attributes from the production build.
+
+simply add this configuration to your babel.config.js and you are good to go   
+
+```
+npm install babel-plugin-jsx-remove-data-test-id --save-dev
+```
+
+```js  
+env: {
+            production: {
+                only: ['src'],
+                plugins: [
+                    [
+                        'babel-plugin-jsx-remove-data-test-id',
+                        {
+                            attributes: 'data-testid'
+                        }
+                    ]
+                ]
+            }
+        }
+```
+
+
+
+
+
+**2. Know the difference between findBy , getBy and queryBy**
+------------
+
+1.  getBy...: *use it when you know that the element exist int he DOM* 
+- returns:  matching node for a query & throw a descriptive error if no elements match 
+
+2. queryBy...: *use it when you want to test if element exist in the DOM* 
+- returns : matching node for a query & and return null if no elements match
+
+3. findBy...: *use it when you changed something and you are waiting for element to appear on the DOM* 
+- retrurns: Promise which resolves to the node for a query
+
+
+
+
+**3. Use custom matchers provided by testing-library**
+------------
+
+
+Take a look at below assertion
+
+```js
+expect(getByTestId('input-test').type).toBe('number');
+```
+
+Even though above code works, the code is not intuitive and it contains repetitive task. To make this more easier, you can extend the jest's expect capabilities using custom matchers provided by testing-library, the way you can do this is
+<br />
+
+```js
+//in your jest setup-env file add this line, and it will extend your jest matchers
+import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
+```
+
+once we did that, we can easily test our input element like below.
+<br />
+
+```js
+expect(getByTestId('input-test')).toHaveAttribute('type','number');
+Use jest's fakeTimers to mock date related functions or setTImeout, setInterval etc.
+```
+
+Testing component which relies on dates and timers can be difficult, as date & time is constant it is more prone to break our snapshot tests. To circumvent this problem, we can use jest's fakeTimers.
+
+```js
+//To mock date
+jest
+  .useFakeTimers('modern')
+  .setSystemTime(new Date('2020-01-01'));
+
+//Just to mock setTimeout and other web API's
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+```
+
+
+**4. Improve test confidence with user event**
+------------
+
+
+The most common way of simulating any DOM event through RTL is using fireEvent
+<br />
+
+```js
+const textInput =  getByTestId('test-input')
+
+fireEvent.change( textInput , {target: {value: '10'}})
+
+expect(textInput).toHaveValue('10')
+```
+
+Although this works just fine, It doesn't represent how a user would enter this value. As there are many more events triggered when user interact with input like "keyUp" , "KeyDown" etc.
+
+To really resemble the way our app is being used, we can make use of user event
+<br />
+
+```js
+import user from '@testing-library/user-event'
+user.type(input, '10')
+```
+
+User event not only take less code but they also represent how the user will actually use the app.
+
+>In some cases you are better off using fireEvent as it works much better in some special scenario, for example: Material UI's Autocomplete with Dynamic Loading will not work as expect with userEvent, so in Such case you should use fireEvent.
