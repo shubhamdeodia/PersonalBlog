@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import { graphql } from 'gatsby';
-import { ContentCard, Content, Pagination } from '../components';
+import { ContentCard, Content, Pagination, Layout } from '../components';
 import SEO from '../components/seo';
 
 const allPosts = ({ pageContext, data }) => {
@@ -17,7 +17,7 @@ const allPosts = ({ pageContext, data }) => {
     const posts = data.allMdx.edges;
 
     return (
-        <>
+        <Layout>
             <SEO title="Home" />
             {/* <FeatureImage showParticles /> */}
             <Content>
@@ -41,7 +41,7 @@ const allPosts = ({ pageContext, data }) => {
                 prevPage={prevPage}
                 nextPage={nextPage}
             />
-        </>
+        </Layout>
     );
 };
 

@@ -3,27 +3,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { H1 } from '../elements';
-import { FeatureImage, Post } from '../components';
+import { FeatureImage, Layout, Post } from '../components';
 import SEO from '../components/seo';
-
-// const Post = loadable(() =>
-//     import('../components').then((module) => ({ default: module.Post }))
-// )
-// const MDXRenderer = loadable(() =>
-//     import('gatsby-plugin-mdx').then((module) => ({ default: module.MDXRenderer })), {
-//     fallback: (<Backdrop>
-//         <Centered>
-//             <Loader
-//                 type='TailSpin'
-//                 color='#EE4C3A'
-//                 height={100}
-//                 width={100}
-//                 timeout={3000} />
-//         </Centered>
-//     </Backdrop>
-
-//     ) }
-// )
 
 export default function singlePost({ data }) {
     const featureImage =
@@ -35,7 +16,7 @@ export default function singlePost({ data }) {
     const { keywords } = data.mdx.frontmatter;
 
     return (
-        <>
+        <Layout>
             <SEO
                 image={seoImage}
                 keywords={keywords}
@@ -47,7 +28,7 @@ export default function singlePost({ data }) {
                 <H1 margin="0 0 2rem 0">{title}</H1>
                 <MDXRenderer>{data.mdx.body}</MDXRenderer>
             </Post>
-        </>
+        </Layout>
     );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import { getImage, GatsbyImage, getSrc } from 'gatsby-plugin-image';
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 export const Thumbnail = ({ imgName }) => {
     return (
@@ -25,7 +25,6 @@ export const Thumbnail = ({ imgName }) => {
                 });
 
                 const image = getImage(imageData);
-                const imageSrc = getSrc(imageData);
 
                 if (!image) {
                     return null;

@@ -10,4 +10,3 @@ export * from './Table';
 export * from './Code';
 export * from './Thumbnail';
 export * from './layout';
-export * from './Timeline';

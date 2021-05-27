@@ -42,8 +42,8 @@ const components = {
     wrapper: ({ children }) => <>{children}</>
 };
 
-// wrapping all pages with layout
-export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>;
+// // wrapping all pages with layout
+// export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>;
 
 // wrapping all elements with providers
 export const wrapRootElement = ({ element }) => (
