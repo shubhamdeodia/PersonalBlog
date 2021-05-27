@@ -47,11 +47,12 @@ You can also use role attribute on the element to select it.
 ```js  
 import {render} from '@testing-library/react'
 
-const alert = <span role="alert"> Invalid Input </span>
-const{ getByRole} = render(<Button/>)
+const Alert = <span role="alert"> Invalid Input </span>
+
+const{ getByRole } = render(<Alert/>)
 
 //Notice we are using regex to match the text content because are text assertion are case sensitive.
-expect(getByROle('alert')).toHaveTextContent(/alert/i)
+expect(getByRole('alert')).toHaveTextContent(/Invalid Input/i)
 ```
 
 
