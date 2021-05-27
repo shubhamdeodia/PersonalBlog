@@ -6,7 +6,8 @@ import { H1 } from '../elements';
 import { FeatureImage, Layout, Post } from '../components';
 import SEO from '../components/seo';
 
-export default function singlePost({ data }) {
+export default function singlePost(props) {
+    const { data } = props;
     const featureImage =
         data.mdx.frontmatter.featureImage.childImageSharp.gatsbyImageData;
     const seoImage =

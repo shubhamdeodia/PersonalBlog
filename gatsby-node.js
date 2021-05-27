@@ -31,10 +31,12 @@ exports.createPages = async ({ actions, graphql }) => {
             }
         }
     `);
+    // posts
+    const posts = data.allMdx.edges;
 
-    // create paginated pages for post
+    // create blog list
     const postPerPage = 3;
-    const numPages = Math.ceil(data.allMdx.edges.length / postPerPage);
+    const numPages = Math.ceil(posts.length / postPerPage);
 
     Array.from({ length: numPages }).forEach((_, index) => {
         createPage({
@@ -49,16 +51,17 @@ exports.createPages = async ({ actions, graphql }) => {
         });
     });
 
-    // create single blog post
-
-    data.allMdx.edges.forEach((edge) => {
-        const { slug } = edge.node.frontmatter;
-        const { id } = edge.node;
+    // Create blog posts pages.
+    posts.forEach((post, index) => {
+        const { slug } = post.node.frontmatter;
+        const { id } = post.node;
+        const previous = index === posts.length - 1 ? null : posts[index + 1].node;
+        const next = index === 0 ? null : posts[index - 1].node;
 
         createPage({
             path: slug,
             component: path.resolve(__dirname, './src/templates/singlePost.js'),
-            context: { id }
+            context: { id, previous, next }
         });
     });
 };

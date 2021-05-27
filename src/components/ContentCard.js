@@ -15,6 +15,7 @@ import Clock from '../images/clock.svg';
 
 export const ContentCard = ({ date, title, excerpt, slug, readtime }) => {
     const imgName = `${slug}.png`;
+
     return (
         <>
             <CardWrapper>
@@ -60,7 +61,7 @@ export const ContentCard = ({ date, title, excerpt, slug, readtime }) => {
                         >
                             {excerpt}
                             {'...  '}
-                            <Link to={slug}>read more</Link>
+                            <a href={slug}>read more</a>
                         </P>
                     </CardContentWrapper>
                 </ArticleWrapper>
