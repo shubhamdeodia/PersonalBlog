@@ -123,9 +123,11 @@ once we did that, we can easily test our input element like below.
 
 ```js
 expect(getByTestId('input-test')).toHaveAttribute('type','number');
-Use jest's fakeTimers to mock date related functions or setTImeout, setInterval etc.
 ```
 
+
+**3. Use jest's fakeTimers to mock date related functions or setTImeout, setInterval etc.**
+------------
 Testing component which relies on dates and timers can be difficult, as date & time is constant it is more prone to break our snapshot tests. To circumvent this problem, we can use jest's fakeTimers.
 
 ```js
