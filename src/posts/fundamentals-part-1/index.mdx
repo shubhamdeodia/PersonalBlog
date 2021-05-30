@@ -1,0 +1,106 @@
+---
+title: Introduction to Execution Context
+slug: intro-execution-context
+date: 2021-05-30
+thumbnail: intro-execution-context.png
+readtime: 2min
+keywords: [ introduction, execution context, global context, javascript ]
+featureImage: 123123.jpg
+excerpt: What happens behind the scene when Javascript engines runs a some code?
+---
+
+***What happens behind the scene when Javascript engines runs a some code.***
+---------
+
+As soon as we start running our code, we create a *global execution context*, This context have the following
+
+1.  Thread of execution - which parse and executes the code line by line
+2.  Live memory of variables with data - which is essetially know as Global variable environment
+
+```javascript
+const num = 3;
+function printNumber(num){
+    const numSquare = num * num
+    console.log(numSquare);
+}
+const foo ='bar'
+```
+
+***Global execution context***
+
+Memory | variable name | value
+--- | --- | ---
+ - | num | 3
+- | printName | [fn]:definition
+- | foo | bar
+
+we are calling it as Global memory and anything which is declared in here is available throghout our code globally.
+
+>notice our global execution conext does not have any varaible which is declared inside the function `printName`. Because we never executed it.
+
+As soon as we start executing our code we create something which known as *execution context*. A space in which we need to execute our code and in order to execute our code we need the thread of execution which goes through the code line by line and a memory where this thread can store the stuff it encounters.
+
+Now let's talk about the thread, the thread in Javascript is 
+1.  Single threaded (one thing at a time)
+2.  Synchornous exection (for now lets keep it like that)
+
+Also, lets understand one of the most important tool in javascript - Function. Functions are way of wrapping of intructions that needs to be executed later on.
+
+So when we execute a function we create a new execution context comprising of
+1.  The thread of execution
+2.  A local memorry (Variable envrionment). Where anything defined in a function is stored.
+
+_________________
+
+**Now let's consider another example**
+<br />
+
+```javascript
+const num = 3;
+function multipleyBy2(inputNumber){
+    const result = inputNumber*2;
+    return result;
+}
+const output = multiplyBy2(4); //  (1)
+const newOutput = multiplyBy2(10); // (2)
+```
+
+At this point,
+
+***Global execution context is***
+
+Memory | variable name | value
+--- | --- | ---
+ - | num | 3
+- | multipleyBy2 | [fn]:definition
+- | output | undefined
+- | newOutput | undefined
+
+Now when we start executing our function we create something called as, local execution context.
+
+At this code line
+`const output = ;`
+
+***Local execution context is***
+
+Local Memory | variable name | value
+--- | --- | ---
+ - | inputNumber | 4
+- | result | 8
+
+and for line 
+`const newOutput = multiplyBy2(10);`
+it again created another execution context and same thing happened as above.
+
+
+Now when Javascript start executing the code, it also creates something called as `call stack`
+
+Call stack | comments 
+--- | --- 
+ multiplyBy2(10)| once ` multiplyBy2(4)` is executed , it pops out and next function execution gets added to the call stack.
+ multiplyBy2(4)| this is the first function execution which javascript encounters,  Once finished executing the function. It pops out this function from the call stack.
+global execution context| it is always part of the call stack
+
+As we can see from the above example, our Call stack is essentially which keeos tracks of which execution context we are in, that is, what functuon is currently being run and where to return to after an execution context is popped off the stack.
+
+***One global execution context, mutiple function context***
